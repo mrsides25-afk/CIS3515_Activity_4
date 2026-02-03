@@ -14,13 +14,32 @@ class MainActivity : AppCompatActivity() {
 
         /* TODO Step 2: Populate this array with multiples of 5 from 5 - 100*/
         //val numberArray = Array Of Numbers
+        val numberArray = Array(20) {
+             (it + 1) * 5
+        }
+
 
         /* TODO Step 3: Create adapter to display items from array in Spinner */
-        //spinner.adapter = ArrayAdapter...
-
+        val adapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line,numberArray)
+        spinner.adapter = adapter
 
         // TODO Step 4: Change TextView's text size to the number selected in the Spinner */
-        //spinner.onItemSelectedListener = object: ...
+        spinner.onItemSelectedListener = object: AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                p0: AdapterView<*>?,
+                p1: View?,
+                p2: Int,
+                p3: Long
+            ) {
+                displayTextView.textSize = p2.toFloat()
+            }
+
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+                TODO("Not yet implemented")
+            }
+
+
+        }
 
     }
 }
