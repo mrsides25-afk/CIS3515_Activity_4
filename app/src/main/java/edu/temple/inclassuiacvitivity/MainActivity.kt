@@ -31,7 +31,11 @@ class MainActivity : AppCompatActivity() {
                 p2: Int,
                 p3: Long
             ) {
-                displayTextView.textSize = p2.toFloat()
+                p0?.run {
+                    displayTextView.textSize = getItemAtPosition(p2).toString().toFloat()
+                }
+
+
             }
 
             override fun onNothingSelected(p0: AdapterView<*>?) {
